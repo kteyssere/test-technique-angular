@@ -1,5 +1,5 @@
 import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { fakeAsync } from "@angular/core/testing";
+import {fakeAsync} from "@angular/core/testing";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
@@ -14,6 +14,7 @@ import { Person } from "./person";
 import { PersonGeneratorComponent } from "./person-generator/person-generator.component";
 import { PersonListComponent } from "./person-list/person-list.component";
 import { PersonService } from "./person.service";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 const PERSONS: Person[] = [
@@ -66,7 +67,8 @@ describe("PersonListComponent", () => {
 			ReactiveFormsModule,
 			HttpClientTestingModule,
 			NoopAnimationsModule,
-			RouterTestingModule.withRoutes([])
+			RouterTestingModule.withRoutes([]),
+			TranslateModule.forRoot()
 		]
 	});
 
@@ -87,7 +89,7 @@ describe("PersonListComponent", () => {
 		spectatorHttp.expectOne("/assets/data/persons.json", HttpMethod.GET);
 
 		spectatorHttp.service.getPersons(DEFAULT_CONFIG).subscribe(element => {
-			expect(element.length).toBe(1);
+			expect(element.length).toBe(3);
 			expect(element.map(p => p.id)).toEqual([1, 2, 3]);
 
 		});
@@ -97,7 +99,6 @@ describe("PersonListComponent", () => {
 		]);
 
 		spectatorHttp.flushAll(reqs, [PERSONS]);
-
 	}));
 
 

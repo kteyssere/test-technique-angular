@@ -1,5 +1,4 @@
 import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
@@ -10,6 +9,7 @@ import { Spectator } from "@ngneat/spectator";
 import { createComponentFactory } from "@ngneat/spectator/jest";
 import { PersonGeneratorComponent } from "../person-generator/person-generator.component";
 import { PersonListComponent } from "./person-list.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 describe("PersonListComponent", () => {
 
@@ -27,7 +27,8 @@ describe("PersonListComponent", () => {
 			MatButtonModule,
 			ReactiveFormsModule,
 			HttpClientTestingModule,
-			NoopAnimationsModule
+			NoopAnimationsModule,
+			TranslateModule.forRoot()
 		],
 	});
 

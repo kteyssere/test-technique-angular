@@ -13,6 +13,7 @@
 	<div class="gender">
 		<mat-checkbox class="Homme" formControlName="male">Homme</mat-checkbox>
 		<mat-checkbox class="Femme" formControlName="female">Femme</mat-checkbox>
+		<span [hidden]="!generator.hasError('noGenderChoosed')" class="error">Veuillez choisir au moins un critère de genre</span>
 	</div>
 
 	<div class="actions">
